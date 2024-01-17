@@ -1,0 +1,31 @@
+# permissions for end users to edit langserves.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: langserve-editor-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: langserve-operator-template
+    app.kubernetes.io/part-of: langserve-operator-template
+    app.kubernetes.io/managed-by: kustomize
+  name: langserve-editor-role
+rules:
+- apiGroups:
+  - langsmith.com.langchain.com
+  resources:
+  - langserves
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - langsmith.com.langchain.com
+  resources:
+  - langserves/status
+  verbs:
+  - get

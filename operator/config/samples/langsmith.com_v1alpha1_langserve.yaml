@@ -1,0 +1,12 @@
+apiVersion: langsmith.com.langchain.com/v1alpha1
+kind: Langserve
+metadata:
+  labels:
+    app.kubernetes.io/name: langserve
+    app.kubernetes.io/instance: langserve-sample
+    app.kubernetes.io/part-of: langserve-operator-template
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: langserve-operator-template
+  name: langserve-sample
+spec:
+  # TODO(user): Add fields here
