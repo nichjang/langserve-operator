@@ -28,14 +28,25 @@ type LangserveSpec struct {
 	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
 
-	// Foo is an example field of Langserve. Edit langserve_types.go to remove/update
-	Foo string `json:"foo,omitempty"`
+	// Replicas indicate the replicas to mantain
+	// +kubebuilder:validation:Optional
+	// +kubebuilder:default:=1
+	Replicas int32 `json:"replicas"`
+
+	// Image of Langserve app
+	Image string `json:"image"`
+
+	// Name of Langserve deployment
+	Name string `json:"name"`
 }
 
 // LangserveStatus defines the observed state of Langserve
 type LangserveStatus struct {
 	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
+
+	// Pods are the names of the pods hosting the deployment
+	Pods []string `json:"pods"`
 }
 
 //+kubebuilder:object:root=true
