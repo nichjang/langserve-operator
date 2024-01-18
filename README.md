@@ -16,8 +16,17 @@ kubectl get pods -A
 # Create custom Langserve resource
 kubectl apply -f config/samples/langsmith.com_v1alpha1_langserve.yaml
 
-# Verify langserve instances deployed (should see 2 lanserve pods)
+# Verify langserve instances deployed (should see 2 langserve pods)
 kubectl get pods -A
+
+# Verify langserve CRD exists
+kubectl get langserve langserve-sample -o json
+
+# Port-forward (go to localhost:8080) on browser
+kubectl port-forward langserve-sample-5c89d699ff-r8jnw 8080:8080
+
+# Delete langserve CRD (pods will be deleted)
+kubectl delete langserve langserve-sample
 
 ```
 
